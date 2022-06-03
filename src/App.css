@@ -20,7 +20,13 @@ canvas{
   
 }
 
-.side-bar input{
+.side-bar input, .btn-show{
   width: 80px;
   height: 30px;
+  margin: 5px 2px 5px 2px;
+}
+
+.btn-show{
+  background-color: none;
+  border: 1px solid black;
 }
