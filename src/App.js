@@ -1,24 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import {useState} from 'react'
+
+import { Canvas, useFrame } from '@react-three/fiber'
+// import Model from './components/Model';
+import {OrbitControls} from '@react-three/drei'
+import {Html} from '@react-three/drei'
+import Model from './components/BoschbetonV101'
 
 function App() {
+const [loop, setLoop] = useState(3)
+
+const runLoop = (event)=>{
+  setLoop(parseInt(event.target.value))
+}
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <div className='side-bar'> 
+
+<input type={'number'} onChange={runLoop} />
+</div>
+    <Canvas camera={{position : [-5,4,5]}}>
+     
+      <OrbitControls />
+      <pointLight position={[10, 10, 10]} />
+      <ambientLight intensity={1000} />
+      <Model loop = {loop}/>
+    </Canvas>
+    </>
   );
 }
 
