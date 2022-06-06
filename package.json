@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@react-spring/three": "^9.4.5",
+    "@react-three/cannon": "^6.3.0",
     "@react-three/drei": "^9.11.3",
     "@react-three/fiber": "^8.0.20",
     "@testing-library/jest-dom": "^5.16.4",

@@ -1,10 +1,10 @@
-canvas{
+canvas {
   width: 100%;
   height: 100vh;
   background-color: lightblue;
 }
 
-.side-bar{
+.side-bar {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -17,16 +17,46 @@ canvas{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
 }
 
-.side-bar input, .btn-show{
+.side-bar input,
+.btn-show {
   width: 80px;
   height: 30px;
   margin: 5px 2px 5px 2px;
 }
 
-.btn-show{
+.btn-show {
   background-color: none;
   border: 1px solid black;
+}
+
+.areas {
+  width: 90%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 10px;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  margin: 30px;
+}
+
+.areas div {
+  /* width: 30%; */
+  height: 30px;
+
+  border: 1px solid black;
+  text-align: center;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.areas div:hover {
+  background-color: black;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
