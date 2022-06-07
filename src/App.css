@@ -1,3 +1,10 @@
+:root {
+  --green: #00611b;
+  --red: rgb(134, 4, 4);
+}
+* {
+  color: var(--green);
+}
 canvas {
   width: 100%;
   height: 100vh;
@@ -8,10 +15,10 @@ canvas {
   position: absolute;
   top: 0px;
   left: 0px;
-  width: 20%;
+  width: 10%;
   height: 100vh;
   z-index: 1;
-  background-color: rgba(255, 255, 255, 49%);
+  background-color: rgb(198 134 134 / 12%);
   backdrop-filter: blur(10px);
   display: flex;
   flex-direction: column;
@@ -31,22 +38,39 @@ canvas {
   border: 1px solid black;
 }
 
+.btn-show:hover,
+.areas div:hover {
+  background-color: var(--green);
+  /* color: var(--red); */
+  color: white;
+  cursor: pointer;
+}
+
+.areas-container {
+  /* border: 1px solid var(--red); */
+  /* background-color: rgba(194, 104, 104, 0.253); */
+  /* backdrop-filter: blur(10px); */
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
 .areas {
   width: 90%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   column-gap: 10px;
   align-items: center;
   align-content: center;
   justify-content: center;
-  margin: 30px;
+  margin: 30px 5px;
 }
 
 .areas div {
   /* width: 30%; */
   height: 30px;
+  margin-top: 10px;
 
-  border: 1px solid black;
+  border: 1px solid var(--red);
   text-align: center;
   display: flex;
   align-content: center;
@@ -54,9 +78,9 @@ canvas {
   justify-content: center;
 }
 
-.areas div:hover {
+/* .areas div:hover {
   background-color: black;
   color: white;
   border: none;
   cursor: pointer;
-}
+} */

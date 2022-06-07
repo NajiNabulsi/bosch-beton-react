@@ -45,19 +45,23 @@ export default function Model({ ...props }) {
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Scene">
-        <mesh
+        {/* <mesh
           name="car001"
           geometry={nodes.car001.geometry}
           material={materials["Material.001"]}
-          position={[-1.83, 1.06, 0.11]}
+          position={[-1.83, 0.4, 0.11]}
           rotation={[0, -Math.PI / 2, 0]}
-        />
-        {/* <mesh
+        /> */}
+        <mesh
           name="flour001"
           geometry={nodes.flour001.geometry}
-          material={nodes.flour001.material}
-          position={[23.27, 0.24, -39.94]}
-        /> */}
+          // material={nodes.flour001.material}
+          material={new THREE.MeshBasicMaterial({ color: 0xa3a3a3 })}
+          material-roughness={[0.2]}
+          material-metalness={[0]}
+          material-color={"light blue"}
+          position={[23.27, 0, -39.94]}
+        />
       </group>
 
       <group
@@ -75,14 +79,14 @@ export default function Model({ ...props }) {
                 name="sid-right"
                 geometry={nodes["sid-right"].geometry}
                 material={nodes["sid-right"].material}
-                position={[2.77 + props.poX, 0.744883, cords * -1]}
+                position={[2.77 + props.poX, 0.2, cords * -1]}
               />
               <mesh
                 key={"left" + i}
                 name="sid-left"
                 geometry={nodes["sid-left"].geometry}
                 material={nodes["sid-left"].material}
-                position={[-4.73, 0.744883, cords * -1]}
+                position={[-4.73, 0.2, cords * -1]}
                 rotation={[-Math.PI, 1.57, -Math.PI]}
               />
             </>
@@ -94,7 +98,7 @@ export default function Model({ ...props }) {
             name="rear-wall-midel"
             geometry={nodes["rear-wall-midel"].geometry}
             material={nodes["rear-wall-midel"].material}
-            position={[-0.93 + props.poX / 2, 0.75, -0.71 - props.poZ + 1]}
+            position={[-0.93 + props.poX / 2, 0.3, -0.4 - props.poZ + 1]}
             scale={[Math.floor(props.poX / 2 + 1), 1, 1]}
           />
           <mesh
@@ -102,14 +106,14 @@ export default function Model({ ...props }) {
             name="rear-wall-left"
             geometry={nodes["rear-wall-left"].geometry}
             material={nodes["rear-wall-left"].material}
-            position={[-3.86, 0.75, -0.71 - props.poZ + 1]}
+            position={[-3.86, 0.3, -0.4 - props.poZ + 1]}
           />
           <mesh
             // visible={props.visible}
             name="rear-Wall-right"
             geometry={nodes["rear-Wall-right"].geometry}
             material={nodes["rear-Wall-right"].material}
-            position={[1.99 + props.poX, 0.75, -0.76 - props.poZ + 1]}
+            position={[1.99 + props.poX, 0.3, -0.4 - props.poZ + 1]}
           />
         </group>
       </group>
@@ -129,14 +133,14 @@ export default function Model({ ...props }) {
                   // ref={ref}
                   name="second-sid-right"
                   object={nodes["sid-right"]}
-                  position={[2.77 + props.poX, 0.744883, cords * -1]}
+                  position={[2.77 + props.poX, 0.2, cords * -1]}
                 />
                 <Clone
                   key={"left" + i}
                   name="second-sid-left"
                   object={nodes["sid-left"]}
                   // material={nodes["sid-left"].material}
-                  position={[-4.73, 0.744883, cords * -1]}
+                  position={[-4.73, 0.2, cords * -1]}
                   // rotation={[-Math.PI, 1.57, -Math.PI]}
                 />
               </>
@@ -148,7 +152,7 @@ export default function Model({ ...props }) {
               name="second-rear-wall-midel"
               object={nodes["rear-wall-midel"]}
               // material={nodes["rear-wall-midel"].material}
-              position={[-0.93 + props.poX / 2, 0.75, -0.71 - props.poZ + 1]}
+              position={[-0.93 + props.poX / 2, 0.2, -0.5 - props.poZ + 1]}
               scale={[Math.floor(props.poX / 2 + 1), 1, 1]}
             />
             <Clone
@@ -156,14 +160,14 @@ export default function Model({ ...props }) {
               name="second-rear-wall-left"
               object={nodes["rear-wall-left"]}
               // material={nodes["rear-wall-left"].material}
-              position={[-3.86, 0.75, -0.71 - props.poZ + 1]}
+              position={[-3.86, 0.2, -0.5 - props.poZ + 1]}
             />
             <Clone
               // visible={props.visible}
               name="second-rear-Wall-right"
               object={nodes["rear-Wall-right"]}
               // material={nodes["rear-Wall-right"].material}
-              position={[1.99 + props.poX, 0.75, -0.76 - props.poZ + 1]}
+              position={[1.99 + props.poX, 0.2, -0.5 - props.poZ + 1]}
             />
           </group>
         </group>
@@ -186,14 +190,14 @@ export default function Model({ ...props }) {
                   name="thrid-sid-right"
                   object={nodes["sid-right"]}
                   // material={nodes["sid-right"].material}
-                  position={[2.77 + props.poX, 0.744883, cords * -1]}
+                  position={[2.77 + props.poX, 0.2, cords * -1]}
                 />
                 <Clone
                   key={"left" + i}
                   name="sid-left"
                   object={nodes["sid-left"]}
                   // material={nodes["sid-left"].material}
-                  position={[-4.73 + props.poX, 0.744883, cords * -1]}
+                  position={[-4.73 + props.poX, 0.2, cords * -1]}
                   rotation={[-Math.PI, 1.57, -Math.PI]}
                 />
               </>
@@ -205,7 +209,7 @@ export default function Model({ ...props }) {
               name="thrid-rear-wall-midel"
               object={nodes["rear-wall-midel"]}
               // material={nodes["rear-wall-midel"].material}
-              position={[-0.93 + props.poX / 2, 0.75, -0.71 - props.poZ + 1]}
+              position={[-0.93 + props.poX / 2, 0.2, -0.5 - props.poZ + 1]}
               scale={[Math.floor(props.poX / 2 + 1), 1, 1]}
             />
             <Clone
@@ -213,14 +217,70 @@ export default function Model({ ...props }) {
               name="thrid-rear-wall-left"
               object={nodes["rear-wall-left"]}
               // material={nodes["rear-wall-left"].material}
-              position={[-3.86, 0.75, -0.71 - props.poZ + 1]}
+              position={[-3.86, 0.2, -0.5 - props.poZ + 1]}
             />
             <Clone
               // visible={props.visible}
               name="thrid-rear-Wall-right"
               object={nodes["rear-Wall-right"]}
               // material={nodes["rear-Wall-right"].material}
-              position={[1.99 + props.poX, 0.75, -0.76 - props.poZ + 1]}
+              position={[1.99 + props.poX, 0.2, -0.5 - props.poZ + 1]}
+            />
+          </group>
+        </group>
+      )}
+      {props.areas.four && (
+        <group
+          name="four-thrid-wall"
+          position={[27 + props.poX, -0, -0]}
+          // ref={wallGroup}
+          // position={[0, 0, g]} key={i}
+        >
+          <group name="four-right-left">
+            {createSideLoop().map((cords, i) => (
+              <>
+                <Clone
+                  key={`right` + +i}
+                  // animations={LoopOnce}
+                  // ref={ref}
+                  name="four-sid-right"
+                  object={nodes["sid-right"]}
+                  // material={nodes["sid-right"].material}
+                  position={[2.77 + props.poX, 0.2, cords * -1]}
+                />
+                <Clone
+                  key={"left" + i}
+                  name="four-sid-left"
+                  object={nodes["sid-left"]}
+                  // material={nodes["sid-left"].material}
+                  position={[-4.73 + props.poX, 0.2, cords * -1]}
+                  rotation={[-Math.PI, 1.57, -Math.PI]}
+                />
+              </>
+            ))}
+          </group>
+          <group name="four-rear-wall" visible={props.v}>
+            <Clone
+              // visible={props.visible}
+              name="four-rear-wall-midel"
+              object={nodes["rear-wall-midel"]}
+              // material={nodes["rear-wall-midel"].material}
+              position={[-0.93 + props.poX / 2, 0.2, -0.5 - props.poZ + 1]}
+              scale={[Math.floor(props.poX / 2 + 1), 1, 1]}
+            />
+            <Clone
+              // visible={props.visible}
+              name="four-rear-wall-left"
+              object={nodes["rear-wall-left"]}
+              // material={nodes["rear-wall-left"].material}
+              position={[-3.86, 0.2, -0.5 - props.poZ + 1]}
+              // position={[-3.86, 0.2, 0 - props.poZ + 1]}
+            />
+            <Clone
+              // visible={props.visible}
+              name="four-rear-Wall-right"
+              object={nodes["rear-Wall-right"]}
+              position={[1.99 + props.poX, 0.2, -0.5 - props.poZ + 1]}
             />
           </group>
         </group>

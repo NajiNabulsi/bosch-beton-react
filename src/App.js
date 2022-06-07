@@ -6,10 +6,13 @@ import { useState, Suspense } from "react";
 
 import { Canvas, useFrame } from "@react-three/fiber";
 // import Model from './components/Model';
+
 import { Clone, OrbitControls } from "@react-three/drei";
 import { useBox, Physics } from "@react-three/cannon";
 
 import Model from "./components/BoschbetonV102";
+import Mbs from "./components/Mbs-Beton.js";
+import Trucke from "./components/Trucke";
 // import Model from "./components/BoschbetonV101";
 import RearWall from "./components/TestBoschbetonV101.js";
 
@@ -17,7 +20,7 @@ import Ball from "./components/Ball";
 import Ground from "./components/Ground";
 
 function App() {
-  const [loop, setLoop] = useState(1);
+  const [loop, setLoop] = useState(10);
   const [width, setWidth] = useState(0);
   const [btnShowHide, setBtnShowHide] = useState({
     show: false,
@@ -47,29 +50,57 @@ function App() {
 
   const twoClickHandel = () => {
     if (areas.second === false) {
-      setAreas({ ...areas, second: true });
+      setAreas({
+        second: true,
+        third: false,
+        four: false,
+      });
     } else {
-      setAreas({ ...areas, second: false });
+      setAreas({
+        second: false,
+        third: false,
+        four: false,
+      });
     }
   };
 
   const thirdClickHandel = () => {
     if (areas.third === false) {
-      setAreas({ ...areas, third: true });
-      // if(areas.second=== false)
-      // setAreas({ second: true, third: true });
+      setAreas({ second: true, third: true, four: false });
     } else {
-      setAreas({ ...areas, third: false });
+      setAreas({
+        ...areas,
+        third: false,
+        four: false,
+      });
     }
   };
 
-  console.log("areas: ", areas);
+  const fourClickHandel = () => {
+    if (areas.four === false) {
+      setAreas({
+        second: true,
+        third: true,
+        four: true,
+      });
+    } else {
+      setAreas({ ...areas, four: false });
+    }
+  };
+
+  // console.log("areas: ", areas);
   return (
     <>
       <div className="side-bar">
         <div>
-          <label>Long</label>
-          <input type={"number"} onChange={runLoop} min={1} max={20} step={1} />
+          <label>Lengte</label>
+          <input
+            type={"number"}
+            onChange={runLoop}
+            min={10}
+            max={20}
+            step={1}
+          />
         </div>
         <div>
           <label>Width</label>
@@ -86,16 +117,22 @@ function App() {
             {btnShowHide.caption}
           </button>
         </div>
-        <div className="areas">
-          <div onClick={twoClickHandel}>2</div>
-          <div onClick={thirdClickHandel}>3</div>
-          <div>4</div>
+        <div className="areas-container">
+          <p>hoeveel gebieden?</p>
+          <div className="areas">
+            <div onClick={twoClickHandel}>2</div>
+            <div onClick={thirdClickHandel}>3</div>
+            <div onClick={fourClickHandel}>4</div>
+          </div>
         </div>
       </div>
-      <Canvas camera={{ position: [-5, 4, 5] }}>
+      <Canvas camera={{ position: [-5, 3, 8] }}>
         <OrbitControls />
-        <pointLight position={[10, 10, 10]} />
+        <pointLight position={[0, 15, 10]} />
+        <pointLight position={[-10, 15, 0]} />
         <ambientLight intensity={1000} />
+        <axesHelper />
+
         <Suspense fallback={null}>
           {/* <Physics> */}
           {/* <Ball position={[0.5, 7, 0]} color={"red"} /> */}
@@ -106,7 +143,8 @@ function App() {
             v={btnShowHide.show}
             areas={areas}
           />
-
+          <Mbs />
+          <Trucke />
           {/* <Model loop={loop} poX={width} /> */}
           {/* <RearWall
             poX={width}
