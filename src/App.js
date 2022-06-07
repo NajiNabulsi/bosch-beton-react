@@ -129,10 +129,18 @@ function App() {
       <Canvas camera={{ position: [-5, 3, 8] }}>
         <OrbitControls />
         <pointLight position={[0, 15, 10]} />
+        <pointLight position={[10, 15, 0]} />
         <pointLight position={[-10, 15, 0]} />
         <ambientLight intensity={1000} />
         <axesHelper />
-
+        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[20, 0, -20]}>
+          <planeBufferGeometry args={[100, 100]} />
+          <meshStandardMaterial
+            widthSegments={10}
+            heightSegments={10}
+            // wireframe
+          />
+        </mesh>
         <Suspense fallback={null}>
           {/* <Physics> */}
           {/* <Ball position={[0.5, 7, 0]} color={"red"} /> */}

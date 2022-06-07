@@ -52,7 +52,7 @@ export default function Model({ ...props }) {
           position={[-1.83, 0.4, 0.11]}
           rotation={[0, -Math.PI / 2, 0]}
         /> */}
-        <mesh
+        {/* <mesh
           name="flour001"
           geometry={nodes.flour001.geometry}
           // material={nodes.flour001.material}
@@ -61,7 +61,7 @@ export default function Model({ ...props }) {
           material-metalness={[0]}
           material-color={"light blue"}
           position={[23.27, 0, -39.94]}
-        />
+        /> */}
       </group>
 
       <group
