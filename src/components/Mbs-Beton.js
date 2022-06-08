@@ -21,19 +21,14 @@ export default function Model({ ...props }) {
     >
       <mesh
         geometry={nodes.Text.geometry}
-        // material={materials.back}
         material={new THREE.MeshBasicMaterial({ color: "black" })}
-        // material-color="red"
-        // materialcolor={"red"}
         material-roughness={[0.2]}
         material-metalness={[0]}
         position={[-0.29, 0, 0.2]}
         rotation={[3.1, 1.57, -3.11]}
-        // rotation={[3.1, 1.57, -3.11]}
       />
       <mesh
         geometry={nodes.red.geometry}
-        // material={materials.red}
         material={new THREE.MeshBasicMaterial({ color: 0xce2613 })}
         material-color={"red"}
         material-roughness={[0]}
@@ -42,9 +37,7 @@ export default function Model({ ...props }) {
       />
       <mesh
         geometry={nodes.green.geometry}
-        // material={materials.green}
         material={new THREE.MeshBasicMaterial({ color: 0x00611b })}
-        // material-color={"green"}
         material-roughness={[1]}
         position={[-0.34, 0, 0.64]}
         rotation={[-Math.PI, 0, 0]}

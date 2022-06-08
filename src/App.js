@@ -5,7 +5,6 @@ import "./App.css";
 import { useState, Suspense } from "react";
 
 import { Canvas, useFrame } from "@react-three/fiber";
-// import Model from './components/Model';
 
 import { Clone, OrbitControls } from "@react-three/drei";
 import { useBox, Physics } from "@react-three/cannon";
@@ -13,11 +12,6 @@ import { useBox, Physics } from "@react-three/cannon";
 import Model from "./components/BoschbetonV102";
 import Mbs from "./components/Mbs-Beton.js";
 import Trucke from "./components/Trucke";
-// import Model from "./components/BoschbetonV101";
-import RearWall from "./components/TestBoschbetonV101.js";
-
-import Ball from "./components/Ball";
-import Ground from "./components/Ground";
 
 function App() {
   const [loop, setLoop] = useState(10);
@@ -88,7 +82,6 @@ function App() {
     }
   };
 
-  // console.log("areas: ", areas);
   return (
     <>
       <div className="side-bar">
@@ -146,8 +139,6 @@ function App() {
           />
         </mesh>
         <Suspense fallback={null}>
-          {/* <Physics> */}
-          {/* <Ball position={[0.5, 7, 0]} color={"red"} /> */}
           <Model
             loop={loop}
             poX={width}
@@ -157,16 +148,6 @@ function App() {
           />
           <Mbs />
           <Trucke />
-          {/* <Model loop={loop} poX={width} /> */}
-          {/* <RearWall
-            poX={width}
-            poZ={loop}
-            // width={width}
-            visible={btnShowHide.show}
-            // scaleX={}
-          /> */}
-          {/* <Ground rotation={[-Math.PI / 2, 0, 0]} /> */}
-          {/* </Physics> */}
         </Suspense>
       </Canvas>
     </>

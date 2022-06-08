@@ -64,17 +64,12 @@ export default function Model({ ...props }) {
         /> */}
       </group>
 
-      <group
-        name="wall"
-        ref={wallGroup}
-        // position={[0, 0, g]} key={i}
-      >
+      <group name="wall" ref={wallGroup}>
         <group name="right-left">
           {createSideLoop().map((cords, i) => (
             <>
               <mesh
                 key={`right` + +i}
-                // animations={LoopOnce}
                 ref={ref}
                 name="sid-right"
                 geometry={nodes["sid-right"].geometry}
@@ -94,7 +89,6 @@ export default function Model({ ...props }) {
         </group>
         <group name="rear-wall" visible={props.v}>
           <mesh
-            // visible={props.visible}
             name="rear-wall-midel"
             geometry={nodes["rear-wall-midel"].geometry}
             material={nodes["rear-wall-midel"].material}
@@ -102,14 +96,12 @@ export default function Model({ ...props }) {
             scale={[Math.floor(props.poX / 2 + 1), 1, 1]}
           />
           <mesh
-            // visible={props.visible}
             name="rear-wall-left"
             geometry={nodes["rear-wall-left"].geometry}
             material={nodes["rear-wall-left"].material}
             position={[-3.86, 0.3, -0.4 - props.poZ + 1]}
           />
           <mesh
-            // visible={props.visible}
             name="rear-Wall-right"
             geometry={nodes["rear-Wall-right"].geometry}
             material={nodes["rear-Wall-right"].material}
@@ -118,19 +110,12 @@ export default function Model({ ...props }) {
         </group>
       </group>
       {props.areas.second && (
-        <group
-          name="second-wall"
-          position={[9 + props.poX, 0, -0]}
-          // ref={wallGroup}
-          // position={[0, 0, g]} key={i}
-        >
+        <group name="second-wall" position={[9 + props.poX, 0, -0]}>
           <group name="second-right-left">
             {createSideLoop().map((cords, i) => (
               <>
                 <Clone
                   key={`right` + i}
-                  // animations={LoopOnce}
-                  // ref={ref}
                   name="second-sid-right"
                   object={nodes["sid-right"]}
                   position={[2.77 + props.poX, 0.2, cords * -1]}
@@ -139,34 +124,26 @@ export default function Model({ ...props }) {
                   key={"left" + i}
                   name="second-sid-left"
                   object={nodes["sid-left"]}
-                  // material={nodes["sid-left"].material}
                   position={[-4.73, 0.2, cords * -1]}
-                  // rotation={[-Math.PI, 1.57, -Math.PI]}
                 />
               </>
             ))}
           </group>
           <group name="second-rear-wall" visible={props.v}>
             <Clone
-              // visible={props.visible}
               name="second-rear-wall-midel"
               object={nodes["rear-wall-midel"]}
-              // material={nodes["rear-wall-midel"].material}
               position={[-0.93 + props.poX / 2, 0.2, -0.5 - props.poZ + 1]}
               scale={[Math.floor(props.poX / 2 + 1), 1, 1]}
             />
             <Clone
-              // visible={props.visible}
               name="second-rear-wall-left"
               object={nodes["rear-wall-left"]}
-              // material={nodes["rear-wall-left"].material}
               position={[-3.86, 0.2, -0.5 - props.poZ + 1]}
             />
             <Clone
-              // visible={props.visible}
               name="second-rear-Wall-right"
               object={nodes["rear-Wall-right"]}
-              // material={nodes["rear-Wall-right"].material}
               position={[1.99 + props.poX, 0.2, -0.5 - props.poZ + 1]}
             />
           </group>
@@ -174,29 +151,20 @@ export default function Model({ ...props }) {
       )}
 
       {props.areas.third && (
-        <group
-          name="thrid-wall"
-          position={[18 + props.poX, 0, -0]}
-          // ref={wallGroup}
-          // position={[0, 0, g]} key={i}
-        >
+        <group name="thrid-wall" position={[18 + props.poX, 0, -0]}>
           <group name="third-right-left">
             {createSideLoop().map((cords, i) => (
               <>
                 <Clone
                   key={`right` + +i}
-                  // animations={LoopOnce}
-                  // ref={ref}
                   name="thrid-sid-right"
                   object={nodes["sid-right"]}
-                  // material={nodes["sid-right"].material}
                   position={[2.77 + props.poX, 0.2, cords * -1]}
                 />
                 <Clone
                   key={"left" + i}
                   name="sid-left"
                   object={nodes["sid-left"]}
-                  // material={nodes["sid-left"].material}
                   position={[-4.73 + props.poX, 0.2, cords * -1]}
                   rotation={[-Math.PI, 1.57, -Math.PI]}
                 />
@@ -205,54 +173,39 @@ export default function Model({ ...props }) {
           </group>
           <group name="thrid-rear-wall" visible={props.v}>
             <Clone
-              // visible={props.visible}
               name="thrid-rear-wall-midel"
               object={nodes["rear-wall-midel"]}
-              // material={nodes["rear-wall-midel"].material}
               position={[-0.93 + props.poX / 2, 0.2, -0.5 - props.poZ + 1]}
               scale={[Math.floor(props.poX / 2 + 1), 1, 1]}
             />
             <Clone
-              // visible={props.visible}
               name="thrid-rear-wall-left"
               object={nodes["rear-wall-left"]}
-              // material={nodes["rear-wall-left"].material}
               position={[-3.86, 0.2, -0.5 - props.poZ + 1]}
             />
             <Clone
-              // visible={props.visible}
               name="thrid-rear-Wall-right"
               object={nodes["rear-Wall-right"]}
-              // material={nodes["rear-Wall-right"].material}
               position={[1.99 + props.poX, 0.2, -0.5 - props.poZ + 1]}
             />
           </group>
         </group>
       )}
       {props.areas.four && (
-        <group
-          name="four-thrid-wall"
-          position={[27 + props.poX, -0, -0]}
-          // ref={wallGroup}
-          // position={[0, 0, g]} key={i}
-        >
+        <group name="four-thrid-wall" position={[27 + props.poX, -0, -0]}>
           <group name="four-right-left">
             {createSideLoop().map((cords, i) => (
               <>
                 <Clone
                   key={`right` + +i}
-                  // animations={LoopOnce}
-                  // ref={ref}
                   name="four-sid-right"
                   object={nodes["sid-right"]}
-                  // material={nodes["sid-right"].material}
                   position={[2.77 + props.poX, 0.2, cords * -1]}
                 />
                 <Clone
                   key={"left" + i}
                   name="four-sid-left"
                   object={nodes["sid-left"]}
-                  // material={nodes["sid-left"].material}
                   position={[-4.73 + props.poX, 0.2, cords * -1]}
                   rotation={[-Math.PI, 1.57, -Math.PI]}
                 />
@@ -261,23 +214,17 @@ export default function Model({ ...props }) {
           </group>
           <group name="four-rear-wall" visible={props.v}>
             <Clone
-              // visible={props.visible}
               name="four-rear-wall-midel"
               object={nodes["rear-wall-midel"]}
-              // material={nodes["rear-wall-midel"].material}
               position={[-0.93 + props.poX / 2, 0.2, -0.5 - props.poZ + 1]}
               scale={[Math.floor(props.poX / 2 + 1), 1, 1]}
             />
             <Clone
-              // visible={props.visible}
               name="four-rear-wall-left"
               object={nodes["rear-wall-left"]}
-              // material={nodes["rear-wall-left"].material}
               position={[-3.86, 0.2, -0.5 - props.poZ + 1]}
-              // position={[-3.86, 0.2, 0 - props.poZ + 1]}
             />
             <Clone
-              // visible={props.visible}
               name="four-rear-Wall-right"
               object={nodes["rear-Wall-right"]}
               position={[1.99 + props.poX, 0.2, -0.5 - props.poZ + 1]}

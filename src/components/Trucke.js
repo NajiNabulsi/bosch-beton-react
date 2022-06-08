@@ -4,7 +4,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 const Trucke = () => {
   const model = useLoader(GLTFLoader, "/track.glb");
-  // console.log('model: ',model);
+
   return (
     <Suspense fallback={null}>
       <primitive
