@@ -180,8 +180,8 @@ function App() {
             />
             <Mbs />
             {/* {!switchModelState.show ? <Trucke /> : <Tractor />} */}
-            <Trucke />
-            {/* <Tractor /> */}
+            {/* <Trucke /> */}
+            <Tractor />
           </Suspense>
         </Physics>
       </Canvas>
