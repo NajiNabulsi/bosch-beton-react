@@ -9,21 +9,23 @@ import * as THREE from "three";
 export default function Model({ ...props }) {
   const group = useRef();
   const { nodes, materials } = useGLTF("/mbs-Beton.glb");
-  console.log("materials: ", materials.back.color);
-  console.log("materials: ", materials.back.color);
+
   return (
     <group
       ref={group}
       {...props}
       dispose={null}
-      position={[-4.5, 0, 2.5]}
-      rotation={[0, -Math.PI / 2, -0.9]}
+      // position={[-4.5, -0.1, 2.5]}
+      position={[-2, 0.1, 4.5]}
+      rotation={[0, -Math.PI / 2, -0.01]}
+      scale={[4, 0.01, 4]}
+      // rotation={[0, -Math.PI / 2, -0.3]}
     >
       <mesh
         geometry={nodes.Text.geometry}
-        material={new THREE.MeshBasicMaterial({ color: "black" })}
-        material-roughness={[0.2]}
-        material-metalness={[0]}
+        material={new THREE.MeshBasicMaterial({ color: 0x565252 })}
+        material-roughness={[1]}
+        material-metalness={[1]}
         position={[-0.29, 0, 0.2]}
         rotation={[3.1, 1.57, -3.11]}
       />

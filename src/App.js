@@ -1,39 +1,65 @@
 /** npx gltfjsx boschbetonV101.glb */
 /** npx i @react-three/cannon */
 
+/** import from react */
 import "./App.css";
 import { useState, Suspense } from "react";
 
+/** import from fiber */
 import { Canvas, useFrame } from "@react-three/fiber";
 
-import { Clone, OrbitControls } from "@react-three/drei";
+/** import from drei */
+import { OrbitControls } from "@react-three/drei";
 import { useBox, Physics } from "@react-three/cannon";
 
+/** import 3d model */
 import Model from "./components/BoschbetonV102";
 import Mbs from "./components/Mbs-Beton.js";
 import Trucke from "./components/Trucke";
+import Tractor from "./components/Tractor";
+
+/** import from local components */
+import Ground from "./components/Ground";
+import Logo from "./components/Logo";
 
 function App() {
+  /** save how long the sides is */
   const [loop, setLoop] = useState(10);
+
+  /** save how width of the sides is */
   const [width, setWidth] = useState(0);
+
+  /** save the visibility of the rear wall */
   const [btnShowHide, setBtnShowHide] = useState({
     show: false,
-    caption: "show",
+    caption: "Show",
   });
+
+  /** control the visibility of the areas */
   const [areas, setAreas] = useState({
     second: false,
     third: false,
     four: false,
   });
 
+  // /** test model (delet me) */
+  // const [switchModelState, setSwitchModelState] = useState("Tractor");
+
+  /** set how long the sides is */
   const runLoop = (event) => {
-    setLoop(parseInt(event.target.value));
+    if (parseInt(event.target.value) > 10) {
+      setLoop(parseInt(event.target.value));
+    } else setLoop(10);
   };
 
+  /** set the width of the sides is */
   const sideWidth = (event) => {
-    setWidth(parseInt(event.target.value));
+    if (parseInt(event.target.value) > -1) {
+      setWidth(parseInt(event.target.value));
+    } else setWidth(0);
   };
 
+  /** set the visibility of the rear wall */
   const showHideBtn = () => {
     if (btnShowHide.show === false) {
       setBtnShowHide({ show: true, caption: "Hide" });
@@ -42,6 +68,8 @@ function App() {
     }
   };
 
+  /** set the visibility of the areas */
+  /** set the visibility of the second areas */
   const twoClickHandel = () => {
     if (areas.second === false) {
       setAreas({
@@ -58,6 +86,7 @@ function App() {
     }
   };
 
+  /** set the visibility of the third areas */
   const thirdClickHandel = () => {
     if (areas.third === false) {
       setAreas({ second: true, third: true, four: false });
@@ -70,6 +99,7 @@ function App() {
     }
   };
 
+  /** set the visibility of the four areas */
   const fourClickHandel = () => {
     if (areas.four === false) {
       setAreas({
@@ -85,7 +115,10 @@ function App() {
   return (
     <>
       <div className="side-bar">
-        <div>
+        <h1>DEMO</h1>
+
+        <Logo />
+        <div className="input-labels">
           <label>Lengte</label>
           <input
             type={"number"}
@@ -93,9 +126,10 @@ function App() {
             min={10}
             max={20}
             step={1}
+            placeholder="10"
           />
         </div>
-        <div>
+        <div className="input-labels">
           <label>Width</label>
           <input
             type={"number"}
@@ -103,6 +137,7 @@ function App() {
             min={0}
             max={5}
             step={1}
+            placeholder="0"
           />
         </div>
         <div>
@@ -111,7 +146,7 @@ function App() {
           </button>
         </div>
         <div className="areas-container">
-          <p>hoeveel gebieden?</p>
+          <p>Hoeveel gebieden?</p>
           <div className="areas">
             <div onClick={twoClickHandel}>2</div>
             <div onClick={thirdClickHandel}>3</div>
@@ -119,36 +154,36 @@ function App() {
           </div>
         </div>
       </div>
-      <Canvas camera={{ position: [-5, 3, 8] }}>
+      <div className="left-side-bar">
+        <div className="scroll-here">Scroll here</div>
+        <div className="scroll-here-arrow">↓</div>
+        <div className="cart"></div>
+      </div>
+      <Canvas camera={{ position: [-8, 8, 8], fov: 75 }}>
+        {/* <Canvas camera={{ position: [-5, 3, 8] }}> */}
         <OrbitControls />
         <pointLight position={[0, 15, 10]} />
         <pointLight position={[10, 15, 0]} />
         <pointLight position={[-10, 15, 0]} />
         <ambientLight intensity={1000} />
-        <axesHelper />
-        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[20, 0, -20]}>
-          <planeBufferGeometry
-            args={[100, 100]}
-            widthSegments={[10]}
-            heightSegments={[10]}
-          />
-          <meshStandardMaterial
-            // widthSegments={10}
-            // heightSegments={10}
-            wireframe
-          />
-        </mesh>
-        <Suspense fallback={null}>
-          <Model
-            loop={loop}
-            poX={width}
-            poZ={loop}
-            v={btnShowHide.show}
-            areas={areas}
-          />
-          <Mbs />
-          <Trucke />
-        </Suspense>
+        {/* <axesHelper /> */}
+
+        <Physics>
+          <Ground />
+          <Suspense fallback={null}>
+            <Model
+              loop={loop}
+              poX={width}
+              poZ={loop}
+              v={btnShowHide.show}
+              areas={areas}
+            />
+            <Mbs />
+            {/* {!switchModelState.show ? <Trucke /> : <Tractor />} */}
+            <Trucke />
+            {/* <Tractor /> */}
+          </Suspense>
+        </Physics>
       </Canvas>
     </>
   );

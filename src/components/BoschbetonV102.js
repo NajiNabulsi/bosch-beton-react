@@ -15,17 +15,9 @@ export default function Model({ ...props }) {
 
   const ref = useRef();
   const { nodes, materials, animations } = useGLTF("/boschbetonV102.glb");
-  // const { ref, actions } = useAnimations(animations, group);
-  // console.log(actions["sid-leftAction"]);
-
-  // useEffect(() => {
-  //   actions["sid-leftAction"]?.play().setLoop(THREE.LoopOnce, 0);
-  //   actions["sid-rightAction"]?.play().setLoop(THREE.LoopOnce, 0);
-  // }, []);
 
   useEffect(() => {
     setXPostion(ref.current.position);
-    // console.log(x);
   }, [props.poX]);
 
   const createSideLoop = () => {
@@ -36,23 +28,18 @@ export default function Model({ ...props }) {
     }
     return side;
   };
-  // console.log('nodes["sid-right"]:', nodes["sid-right"].position);
-  // console.log("ref: ", ref.current.position.x);
-  // console.log("group: ", group.current.position);
-  // console.log("second-sid-left: ", nodes["second-sid-left"]);
-  // console.log("nodes: ", nodes);
 
   return (
     <group ref={group} {...props} dispose={null}>
-      <group name="Scene">
-        {/* <mesh
+      {/* <group name="Scene"> */}
+      {/* <mesh
           name="car001"
           geometry={nodes.car001.geometry}
           material={materials["Material.001"]}
           position={[-1.83, 0.4, 0.11]}
           rotation={[0, -Math.PI / 2, 0]}
         /> */}
-        {/* <mesh
+      {/* <mesh
           name="flour001"
           geometry={nodes.flour001.geometry}
           // material={nodes.flour001.material}
@@ -62,7 +49,7 @@ export default function Model({ ...props }) {
           material-color={"light blue"}
           position={[23.27, 0, -39.94]}
         /> */}
-      </group>
+      {/* </group> */}
 
       <group name="wall" ref={wallGroup}>
         <group name="right-left">
