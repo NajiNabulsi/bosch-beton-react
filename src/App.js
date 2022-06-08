@@ -130,7 +130,7 @@ function App() {
           />
         </div>
         <div className="input-labels">
-          <label>Width</label>
+          <label>Breedte</label>
           <input
             type={"number"}
             onChange={sideWidth}
@@ -178,8 +178,8 @@ function App() {
               v={btnShowHide.show}
               areas={areas}
             />
+            {/* Mbs logo component */}
             <Mbs />
-            {/* {!switchModelState.show ? <Trucke /> : <Tractor />} */}
             {/* <Trucke /> */}
             <Tractor />
           </Suspense>

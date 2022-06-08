@@ -6,20 +6,19 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 
+/** logo component show on the ground */
 export default function Model({ ...props }) {
   const group = useRef();
-  const { nodes, materials } = useGLTF("/mbs-Beton.glb");
+  const { nodes } = useGLTF("/mbs-Beton.glb");
 
   return (
     <group
       ref={group}
       {...props}
       dispose={null}
-      // position={[-4.5, -0.1, 2.5]}
       position={[-2, 0.1, 4.5]}
       rotation={[0, -Math.PI / 2, -0.01]}
       scale={[4, 0.01, 4]}
-      // rotation={[0, -Math.PI / 2, -0.3]}
     >
       <mesh
         geometry={nodes.Text.geometry}
