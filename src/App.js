@@ -134,11 +134,15 @@ function App() {
         <ambientLight intensity={1000} />
         <axesHelper />
         <mesh rotation={[-Math.PI / 2, 0, 0]} position={[20, 0, -20]}>
-          <planeBufferGeometry args={[100, 100]} />
+          <planeBufferGeometry
+            args={[100, 100]}
+            widthSegments={[10]}
+            heightSegments={[10]}
+          />
           <meshStandardMaterial
-            widthSegments={10}
-            heightSegments={10}
-            // wireframe
+            // widthSegments={10}
+            // heightSegments={10}
+            wireframe
           />
         </mesh>
         <Suspense fallback={null}>
