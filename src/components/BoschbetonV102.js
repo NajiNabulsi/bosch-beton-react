@@ -16,9 +16,9 @@ export default function Model({ ...props }) {
   const ref = useRef();
   const { nodes, materials, animations } = useGLTF("/boschbetonV102.glb");
 
-  useEffect(() => {
-    setXPostion(ref.current.position);
-  }, [props.poX]);
+  // useEffect(() => {
+  //   setXPostion(ref.current.position);
+  // }, [props.poX]);
 
   const createSideLoop = () => {
     let side = [];
